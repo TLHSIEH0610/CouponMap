@@ -2,7 +2,7 @@
 //map DOM & 中心座標
 var map = L.map('mapid', {
     center: [24.793314, 121.014016],
-    zoom: 13
+    zoom: 16
 });
 
 //底層圖資
@@ -30,61 +30,6 @@ let Coupon;
 //AJAX取得口罩資料
 let Cities = document.querySelector('.Cities');
 let list = document.querySelector('.list');
-// let xhr = new XMLHttpRequest();
-// xhr.open('get','https://3000.gov.tw/hpgapi-openmap/api/getPostData');
-// xhr.send();
-// xhr.onload = function(){
-//     Coupon = JSON.parse(xhr.responseText);
-//     console.log(Coupon);
-//     let rawArea =[];
-//     //加上Marker
-//     for(let i=0; i<Coupon.length; i++){
-//         rawArea.push(Coupon[i].hsnNm);
-//         let color;
-//         if(Coupon[i].total == 0){color = 'red'}else{color = 'green'}
-//         markers.addLayer(L.marker([Coupon[i].latitude,Coupon[i].longitude],{ icon: getColor(color)})
-//         .bindPopup(`
-//         <p>分局代號:${Coupon[i].storeCd}</p>
-//         <p>地址:${Coupon[i].addr}</p>
-//         <p>電話:${Coupon[i].tel}</p>
-//         <p class="coupword bg-warning p-2 w-75 text-center">振興券存量:${Coupon[i].total}</p>
-//         </li>
-//         `)
-//         .openPopup());
-//     } 
-//     map.addLayer(markers);
-//     //取得所有地區(不重複)
-//     let Area = [];
-//     rawArea.forEach((item)=>{
-//         if(Area.indexOf(item)==-1 && item!==""){
-//             Area.push(item);
-//         }
-//     })
-//     console.log(Area);
-//     for(let i=0; i<Area.length; i++){
-//         Cities.innerHTML += 
-//         `<option value="${Area[i]}">${Area[i]}</option>`;
-//     }
-//     Cities.addEventListener('change',(e)=>{
-//         console.log(e.target.value)
-//         let location = '';
-//         str = '';
-//         Coupon.forEach((item)=>{
-//             if(item.hsnNm == e.target.value){
-//                 location = [item.latitude,item.longitude];        
-//                 str +=
-//                 `<li>
-//                 <p>分局代號:${item.storeCd}</p>
-//                 <p>地址:${item.addr}</p>
-//                 <p>電話:${item.tel}</p>
-//                 <p class="coupword bg-warning p-2 w-50 text-center">振興券存量:${item.total}</p>
-//                 </li>`
-//             }
-//         })
-//         map.panTo(location, 12)
-//         list.innerHTML = str;
-//     })
-// }
 
 
 
@@ -95,6 +40,7 @@ axios.get('https://3000.gov.tw/hpgapi-openmap/api/getPostData')
         let rawArea =[];
         //加上Marker
         for(let i=0; i<Coupon.length; i++){
+            // Area2.add(Coupon[i].hsnNm)
             rawArea.push(Coupon[i].hsnNm);
             let color;
             if(Coupon[i].total == 0){color = 'red'}else{color = 'green'}
